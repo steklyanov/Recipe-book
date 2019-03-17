@@ -5,7 +5,7 @@ from core import models
 
 def sample_user(email='test@test.ru', password='testpass'):
     """ create sample user"""
-    return get_user_model().objects.create_user(email,password)
+    return get_user_model().objects.create_user(email, password)
 
 
 class ModelTests(TestCase):
