@@ -29,11 +29,12 @@ class PublicRecipeApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def est_auth_required(self):
+    def test_auth_required(self):
         """Test that authentication required"""
         res = self.client.get(RECIPES_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class PrivateRecipeApiTests(TestCase):
     """Test unauthenticated recipe API access"""
@@ -65,7 +66,7 @@ class PrivateRecipeApiTests(TestCase):
             'pass123'
         )
         sample_recipe(user=user2)
-        sample_recipe(uesr=self.user)
+        sample_recipe(user=self.user)
 
         res = self.client.get(RECIPES_URL)
 
